@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亚博体育 — 快速识别与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* —— 深色头图 —— */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #142b44 100%);
+            color: #e9edf2;
+            padding: 64px 0 56px;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 32px;
+            background: #f5f7fa;
+            border-radius: 0 0 50% 50% / 0 0 24px 24px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd6e4;
+            max-width: 720px;
+            margin-top: 8px;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #a0b9d6;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 20px;
+        }
+
+        /* —— 正文区域 —— */
+        .content-section {
+            padding: 48px 0 40px;
+        }
+
+        .content-section h2 {
+            font-size: 1.55rem;
+            font-weight: 550;
+            color: #0b1a2e;
+            margin-bottom: 18px;
+            border-left: 4px solid #1e7b85;
+            padding-left: 16px;
+        }
+
+        .content-section h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 32px;
+            margin-bottom: 10px;
+            color: #1e3a5f;
+        }
+
+        .content-section p {
+            margin-bottom: 18px;
+            color: #2c3e50;
+        }
+
+        .highlight-box {
+            background: #eef2f7;
+            padding: 24px 28px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 6px solid #1e7b85;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 28px 0 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 20px 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.1s ease;
+        }
+
+        .feature-card strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: #0b1a2e;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3e566b;
+            margin-bottom: 0;
+        }
+
+        .faq-item {
+            margin: 16px 0;
+            padding: 16px 0;
+            border-bottom: 1px solid #dce3ed;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            margin-bottom: 4px;
+            color: #0b1a2e;
+        }
+
+        .faq-a {
+            color: #3e566b;
+            font-size: 0.97rem;
+        }
+
+        .note {
+            background: #f0f4fa;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 24px 0 12px;
+            font-size: 0.95rem;
+            color: #2f4055;
+        }
+
+        a {
+            color: #1a6d7a;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #0a4b55;
+            border-bottom-color: #1a6d7a;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #1e7b85;
+            color: #1e7b85;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 450;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            margin-top: 4px;
+        }
+
+        .btn-outline:hover {
+            background: #1e7b85;
+            color: white;
+            border-color: #1e7b85;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 28px 0 36px;
+            font-size: 0.85rem;
+            color: #7a8ba3;
+            border-top: 1px solid #dbe2ec;
+            margin-top: 24px;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 18px;
+            }
+
+            .content-section {
+                padding: 32px 0 24px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-box {
+                padding: 18px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <div class="container">
+            <h1>亚博体育 · 站点介绍</h1>
+            <p>快速了解平台定位、核心特点与使用场景，帮助你判断是否适合自己。<br>以下内容基于公开信息整理，供参考。</p>
+            <span class="tag">产品说明 · 摘要</span>
+        </div>
+    </section>
+
+    <!-- 正文区：浅色背景 -->
+    <div class="container">
+
+        <!-- 摘要 -->
+        <section class="content-section">
+            <h2>一句话摘要</h2>
+            <p><a href="https://cnsite--yabo.com">亚博体育</a> 是一个面向体育赛事与综合娱乐的线上服务平台，主要提供赛事资讯、数据浏览及互动功能。用户可通过该网站快速获取体育相关内容，并根据自身兴趣选择参与方式。平台界面清晰，导航逻辑直观，适合希望集中了解体育动态的人群。</p>
+            <div class="highlight-box">
+                <p><strong>面向人群</strong>：体育爱好者、轻度观赛用户、对线上体育内容感兴趣但尚未形成固定习惯的浏览者。</p>
+                <p><strong>核心价值</strong>：降低信息获取门槛，在一个页面中聚合多项体育相关服务，无需在多个站点之间切换。</p>
+            </div>
+        </section>
+
+        <!-- 亮点 -->
+        <section class="content-section">
+            <h2>主要亮点</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <strong>⚡ 内容聚合</strong>
+                    <p>赛事信息、数据统计、实时动态集中展示，减少信息碎片化带来的困扰。</p>
+                </div>
+                <div class="feature-card">
+                    <strong>🧭 导航清晰</strong>
+                    <p>分类模块明确，即使初次使用也可以快速定位到感兴趣的区域。</p>
+                </div>
+                <div class="feature-card">
+                    <strong>📱 响应适配</strong>
+                    <p>页面针对不同屏幕尺寸做了优化，手机与电脑均可获得一致的浏览体验。</p>
+                </div>
+                <div class="feature-card">
+                    <strong>🔒 基础安全提示</strong>
+                    <p>平台采用标准加密连接，用户可自行查阅隐私与安全说明后再决定使用深度。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用建议（场景） -->
+        <section class="content-section">
+            <h2>使用建议</h2>
+            <p>如果你希望快速了解某场比赛的进展、对比不同联赛的数据，或者只是随便浏览体育资讯，可以打开 <a href="https://cnsite--yabo.com">亚博体育</a> 作为起点。建议先查看“热门赛事”或“今日看点”板块，这有助于建立对平台信息结构的直观印象。</p>
+            <p>对于有明确偏好的用户（例如只关注足球或篮球），可在对应分类下筛选内容。网站没有强制注册或付费门槛，大部分信息可以直接查看。如果需要更个性化的提醒或收藏功能，可以按页面指引完成简单注册。</p>
+            <p>另外，建议使用主流浏览器（Chrome、Edge、Safari）访问，以保证交互元素正常显示。若遇到加载慢或布局异常，可尝试刷新或清理缓存。</p>
+        </section>
+
+        <!-- 提示（可信但克制） -->
+        <section class="content-section">
+            <h2>访问说明</h2>
+            <div class="note">
+                <p>🔹 本页面仅为介绍性质，不构成任何形式的推荐或担保。所有使用决策请基于个人判断。</p>
+                <p>🔹 <a href="https://cnsite--yabo.com">亚博体育</a> 作为第三方平台，其内容与功能可能随时间调整，建议以实际页面为准。</p>
+                <p>🔹 请合理分配时间，避免过度沉迷。任何线上活动都应注意个人信息与资金安全。</p>
+                <p>🔹 若发现异常链接或内容与描述不符，请停止操作并核查网址真实性。</p>
+            </div>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section class="content-section">
+            <h2>常见疑问摘要</h2>
+            <div class="faq-item">
+                <div class="faq-q">问：需要下载软件或插件吗？</div>
+                <div class="faq-a">答：不需要，网站基于浏览器运行，无需安装额外程序。部分实时数据可能需要允许弹窗或启用 JavaScript。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">问：是否包含竞技竞猜内容？</div>
+                <div class="faq-a">答：平台功能可能涉及互动娱乐模块，具体以实际页面展示为准。用户可以自行判断是否参与，建议提前了解当地相关法规。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">问：如何反馈问题或建议？</div>
+                <div class="faq-a">答：通常网站底部或“帮助”页面会提供联系方式。如找不到可尝试通过搜索引擎查找最新信息。</div>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.95rem; color: #4b627c;">以上回答基于常见情况整理，不保证覆盖所有场景。</p>
+        </section>
+
+        <!-- 再次嵌入链接 + 简单操作入口 -->
+        <section class="content-section" style="padding-top: 12px;">
+            <p style="margin-bottom: 8px;">如果你希望直接访问网站，可以点击下方链接：</p>
+            <a href="https://cnsite--yabo.com" class="btn-outline">亚博体育</a>
+            <span style="display: inline-block; margin-left: 12px; font-size: 0.9rem; color: #5c738b;">（在新标签页中打开）</span>
+        </section>
+
+        <!-- 页脚 -->
+        <div class="footer-note">
+            &copy; 介绍页 · 内容基于公开信息整理 · 仅供参考<br>
+            <span style="font-size: 0.75rem; color: #9aadc2;">版本 2025-04 · 页面结构随每次生成变化</span>
+        </div>
+
+    </div>
+</body>
+</html>
