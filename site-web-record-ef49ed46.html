@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hth · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f8fb;
+      color: #1a2a3a;
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 页面标题区 */
+    .page-header {
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0b3b4a;
+      border-left: 6px solid #2a9d8f;
+      padding-left: 20px;
+    }
+
+    .page-header .sub {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: #3d5a6c;
+      max-width: 680px;
+      background: #eaf3f0;
+      padding: 16px 20px;
+      border-radius: 14px;
+      border: 1px solid #c6dfda;
+      box-shadow: 0 2px 6px rgba(42, 157, 143, 0.06);
+    }
+
+    .page-header .sub strong {
+      color: #1b6d63;
+    }
+
+    /* 卡片网格：目录感布局 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 32px 0 40px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 22px 28px;
+      box-shadow: 0 8px 18px rgba(0, 30, 30, 0.04);
+      border: 1px solid #d5e5e1;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(42, 157, 143, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      display: inline-block;
+      background: #deeee8;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      border-radius: 14px;
+      color: #1b6d63;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 10px 0 8px;
+      color: #0b3b4a;
+    }
+
+    .card p {
+      font-size: 0.94rem;
+      color: #2f4960;
+      margin-bottom: 14px;
+    }
+
+    .card .meta-tag {
+      display: inline-block;
+      background: #e4f1ed;
+      color: #166b5e;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    /* 提示区 + 说明区 混合双栏 */
+    .info-duo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 28px 0 40px;
+    }
+
+    .info-box {
+      flex: 1 1 270px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 22px;
+      border: 1px solid #d5e5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-box .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #2a9d8f;
+      font-weight: 600;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #b8d9d2;
+      padding-bottom: 6px;
+    }
+
+    .info-box p {
+      font-size: 0.94rem;
+      color: #1f3749;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .info-box ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 0.92rem;
+      color: #1f3749;
+    }
+
+    .info-box ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #2a9d8f;
+    }
+
+    /* FAQ 摘要区 */
+    .faq-summary {
+      background: #e8f2ef;
+      border-radius: 24px;
+      padding: 24px 28px;
+      margin: 32px 0 40px;
+      border: 1px solid #c2dbd3;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0b3b4a;
+      margin-bottom: 16px;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      padding: 12px 0;
+      border-bottom: 1px solid #c8ddd6;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      min-width: 130px;
+      color: #1b5c52;
+    }
+
+    .faq-a {
+      flex: 1;
+      color: #1e3b4a;
+      font-size: 0.92rem;
+    }
+
+    .faq-a a {
+      color: #0f6b5d;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    /* 页脚 */
+    .page-footer {
+      margin: 48px 0 16px;
+      padding-top: 16px;
+      border-top: 1px solid #c8ddd6;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #3a5b6a;
+    }
+
+    .page-footer a {
+      color: #1b6d63;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+      .page-header h1 {
+        font-size: 1.8rem;
+        padding-left: 14px;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+      .faq-summary {
+        padding: 20px 16px;
+      }
+      .info-duo {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 标题 + 说明区 -->
+  <header class="page-header">
+    <h1>hth · 知识库入口</h1>
+    <div class="sub">
+      <strong>稳定入口</strong> 与结构化说明 —— 基于 <a href="https://site-web-hth.com" style="color:#166b5e;text-decoration:underline;text-underline-offset:3px;font-weight:600;">hth</a> 的页面资源、提示集与常见问题摘要。持续维护，信息密度优先。
+    </div>
+  </header>
+
+  <!-- 网格卡片：目录感布局 -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>协议与索引</h3>
+      <p>接口说明、资源路径、版本记录。覆盖主要节点与数据字段定义。</p>
+      <span class="meta-tag">规范</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔧</div>
+      <h3>配置参考</h3>
+      <p>运行时参数、环境变量、权限范围、日志级别。适用于标准部署。</p>
+      <span class="meta-tag">操作</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <h3>模块说明</h3>
+      <p>各组件职责、依赖关系、调用示意。方便定位功能边界。</p>
+      <span class="meta-tag">架构</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>变更记录</h3>
+      <p>版本迭代摘要、废弃项、迁移注意。基于 <a href="https://site-web-hth.com" style="color:#166b5e;text-decoration:underline;">hth</a> 更新。</p>
+      <span class="meta-tag">历史</span>
+    </div>
+  </div>
+
+  <!-- 提示区 + 相关信息区（双列） -->
+  <div class="info-duo">
+    <div class="info-box">
+      <div class="label">▸ 提示区</div>
+      <p>使用 <strong>hth</strong> 知识库前建议确认基础环境：</p>
+      <ul>
+        <li>网络连通性及 DNS 解析</li>
+        <li>接口认证方式（Token / OAuth）</li>
+        <li>缓存策略与超时阈值</li>
+        <li>优先查阅对应模块卡片</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <div class="label">▸ 相关信息区</div>
+      <p>与 <a href="https://site-web-hth.com" style="color:#166b5e;font-weight:600;text-decoration:underline;">hth</a> 配套的辅助材料：</p>
+      <ul>
+        <li>示例代码片段（Python / JS / Shell）</li>
+        <li>速率限制与重试建议</li>
+        <li>常见状态码释义</li>
+        <li>社区维护的集成指南</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要区 -->
+  <div class="faq-summary">
+    <h2>❓ 从 FAQ 中提取的条目</h2>
+    <div class="faq-item">
+      <span class="faq-q">如何快速检索？</span>
+      <span class="faq-a">使用页面内搜索或按网格卡片分类定位，也可直接通过 <a href="https://site-web-hth.com">hth</a> 起始页导航。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">内容更新频率？</span>
+      <span class="faq-a">与主站同步，通常每两周合并一次变更，紧急修复立即发布。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">有无离线版本？</span>
+      <span class="faq-a">目前提供静态快照，可通过 <a href="https://site-web-hth.com" style="text-decoration:underline;">hth</a> 页面底部链接获取压缩包。</span>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="page-footer">
+    <span>基于 <a href="https://site-web-hth.com">hth</a> · 知识库入口</span>
+    <span>文档版本 2025.04</span>
+  </footer>
+
+</div>
+</body>
+</html>
